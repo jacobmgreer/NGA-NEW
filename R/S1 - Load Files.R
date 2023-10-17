@@ -1,6 +1,6 @@
 options(
   readr.num_columns = 0, 
-  readr.show_types = FALSE)
+  readr.show_col_types = FALSE)
 
 required <- c("purrr", "plyr", "tidyverse", "jsonlite", "textutils", "tools", "lubridate", "magrittr", "readr")
 lapply(required, require, character.only = TRUE)
