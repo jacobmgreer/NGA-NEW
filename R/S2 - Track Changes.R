@@ -2,7 +2,7 @@ options(
   readr.num_columns = 0, 
   readr.show_col_types = FALSE)
 
-required <- c("purrr","plyr","tidyverse","jsonlite","textutils","tools","lubridate","magrittr","readr")
+required <- c("purrr", "plyr", "tidyverse", "jsonlite", "textutils", "tools", "lubridate", "magrittr", "readr")
 lapply(required, require, character.only = TRUE)
 
 art_difference <- function(last, current) {
@@ -61,6 +61,6 @@ art_change <-
   map(~ read_csv(file.path("output/changes", .), col_types = cols)) %>%
   reduce(suppressMessages(bind_rows)) %>%
   arrange(desc(year), desc(match(month, month.name)), desc(datechange), Status, roomTitle, attribution, title) %T>%
-  write_json(., "output/art_change.json")
+  write.csv(., "output/art_change.csv", row.names = FALSE)
 
 rm(i, required, art_difference, input_list, cols)
